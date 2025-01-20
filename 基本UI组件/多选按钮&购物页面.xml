@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+<TextView
+	android:layout_height="wrap_content"
+	android:layout_width="wrap_content"
+	android:text="请选择你要购买的商品："
+	android:textColor="#ff00ff"/>
+<CheckBox
+	android:id="@+id/b1"
+	android:layout_height="wrap_content"
+	android:layout_width="wrap_content"
+	android:text="手表"
+	android:textColor="#000000"/>
+<CheckBox
+	android:id="@+id/b2"
+	android:layout_height="wrap_content"
+	android:layout_width="wrap_content"
+	android:text="项链"
+	android:textColor="#000000"/>
+<CheckBox
+	android:id="@+id/b3"
+    android:layout_height="wrap_content"
+	android:layout_width="wrap_content"
+	android:text="衬衫"
+	android:textColor="#000000"/>
+<CheckBox
+	android:id="@+id/b4"
+	android:layout_height="wrap_content"
+	android:layout_width="wrap_content"
+	android:text="西装"
+	android:textColor="#000000"/>
+<CheckBox
+	android:id="@+id/b5"
+	android:layout_height="wrap_content"
+	android:layout_width="wrap_content"
+	android:text="运动鞋"
+	android:textColor="#000000"/>
+<Button
+	android:id="@+id/ok"
+	android:layout_height="wrap_content"
+	android:layout_width="wrap_content"
+	android:text="确定"
+	android:background="#ffffff"/>
+</LinearLayout>
