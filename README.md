@@ -1,10 +1,10 @@
 # Android Development
 **Powered by 深空科技 (DeeskyTech)**
 
-A simple case of Android software development to help everyone get started as an Android engineer, we will update it in real time.
+A simple case of Android software development to help everyone get started as an Android engineer, we will continue to update.
 
 ## 仓库文件结构
-仓库包含简单的安卓软件开发案例，帮助每一个人入门安卓工程师，我们将实时更新。
+仓库包含简单的安卓软件开发案例，帮助每一个人入门安卓工程师，我们将不断更新。
 
 1. **安卓布局与实现**  
 2. **基本UI组件**  
@@ -38,3 +38,8 @@ The repository contains simple Android software development cases with the follo
 11. **Data Sharing**  
 12. **Web Development**  
 13. **Android Fragment Development**  
+
+---
+
+提醒：几乎所有的java文件开头都有冗余的import 语句，但不影响执行。
+Note: Almost all java files start with redundant import statements, but this does not affect execution.
