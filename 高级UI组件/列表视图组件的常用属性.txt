@@ -1,0 +1,149 @@
+在 Android 开发中，`ListView` 组件用于显示一个可以滚动的、垂直排列的列表。它是一个非常常用的控件，可以通过自定义适配器来将数据绑定到 `ListView` 上。以下是 `ListView` 常用的 XML 属性：
+
+### 1. **`android:id`**
+   - **描述**：设置 `ListView` 的唯一标识符。
+   - **示例**：
+     ```xml
+     android:id="@+id/listView"
+     ```
+
+### 2. **`android:layout_width` 和 `android:layout_height`**
+   - **描述**：设置 `ListView` 的宽度和高度。
+   - **常见值**：`match_parent`, `wrap_content`, 或具体的像素值。
+   - **示例**：
+     ```xml
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     ```
+
+### 3. **`android:divider`**
+   - **描述**：设置列表项之间的分隔线。可以使用颜色、drawable 资源等。
+   - **示例**：
+     ```xml
+     android:divider="@android:color/darker_gray"
+     ```
+
+### 4. **`android:dividerHeight`**
+   - **描述**：设置分隔线的高度。单位为像素。
+   - **示例**：
+     ```xml
+     android:dividerHeight="1dp"
+     ```
+
+### 5. **`android:background`**
+   - **描述**：设置 `ListView` 的背景，可以是颜色、图片或 drawable。
+   - **示例**：
+     ```xml
+     android:background="@android:drawable/list_selector_background"
+     ```
+
+### 6. **`android:scrollingCache`**
+   - **描述**：设置是否启用滚动缓存。默认启用，通常在性能优化中使用。
+   - **示例**：
+     ```xml
+     android:scrollingCache="true"
+     ```
+
+### 7. **`android:choiceMode`**
+   - **描述**：设置 `ListView` 的选择模式。常见的值包括：
+     - `none`: 不允许选择项。
+     - `singleChoice`: 单选模式。
+     - `multipleChoice`: 多选模式。
+     - `multipleChoiceModal`: 多选模式，通常与 `ActionMode` 配合使用。
+   - **示例**：
+     ```xml
+     android:choiceMode="singleChoice"
+     ```
+
+### 8. **`android:fastScrollEnabled`**
+   - **描述**：启用或禁用快速滚动功能，允许用户通过滑动条快速浏览列表。
+   - **示例**：
+     ```xml
+     android:fastScrollEnabled="true"
+     ```
+
+### 9. **`android:fastScrollStyle`**
+   - **描述**：设置快速滚动的样式。
+   - **示例**：
+     ```xml
+     android:fastScrollStyle="@style/FastScrollStyle"
+     ```
+
+### 10. **`android:cacheColorHint`**
+   - **描述**：设置缓存区域的颜色，通常用于优化列表的滑动性能。
+   - **示例**：
+     ```xml
+     android:cacheColorHint="@android:color/transparent"
+     ```
+
+### 11. **`android:emptyView`**
+   - **描述**：设置一个视图，当 `ListView` 没有数据时显示该视图。通常可以显示一个提示文本或图标。
+   - **示例**：
+     ```xml
+     android:emptyView="@id/emptyView"
+     ```
+
+### 12. **`android:layout_gravity`**
+   - **描述**：控制 `ListView` 在父布局中的对齐方式（例如，居中、左对齐等）。
+   - **示例**：
+     ```xml
+     android:layout_gravity="center"
+     ```
+
+### 13. **`android:clipToPadding`**
+   - **描述**：设置 `ListView` 是否剪裁其内容以适应内边距。如果为 `false`，内容会延伸到内边距区域。
+   - **示例**：
+     ```xml
+     android:clipToPadding="false"
+     ```
+
+### 14. **`android:padding`**
+   - **描述**：设置 `ListView` 的内边距，用于控制控件的内容与边界之间的距离。
+   - **示例**：
+     ```xml
+     android:padding="10dp"
+     ```
+
+### 15. **`android:overScrollMode`**
+   - **描述**：设置 `ListView` 的过度滚动效果（即用户滚动到列表顶部或底部时的视觉效果）。
+   - **常见值**：
+     - `overScrollAlways`: 总是显示过度滚动效果。
+     - `overScrollIfContentScrolls`: 只有当内容超过屏幕时才显示。
+     - `never`: 不显示过度滚动效果。
+   - **示例**：
+     ```xml
+     android:overScrollMode="overScrollIfContentScrolls"
+     ```
+
+### 16. **`android:smoothScrollbar`**
+   - **描述**：设置是否启用平滑滚动条的显示。
+   - **示例**：
+     ```xml
+     android:smoothScrollbar="true"
+     ```
+
+---
+
+### 示例代码
+
+以下是一个 `ListView` 的完整 XML 示例，包含常见的属性设置：
+
+```xml
+<ListView
+    android:id="@+id/listView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:divider="@android:color/darker_gray"
+    android:dividerHeight="1dp"
+    android:background="@android:drawable/list_selector_background"
+    android:choiceMode="singleChoice"
+    android:fastScrollEnabled="true"
+    android:cacheColorHint="@android:color/transparent"
+    android:emptyView="@id/emptyView"
+    android:layout_gravity="center"
+    android:clipToPadding="false" />
+```
+
+### 总结
+
+这些是 `ListView` 组件常用的 XML 属性。你可以根据需要调整 `ListView` 的外观和行为，例如设置分隔线、选择模式、滚动效果等。此外，`ListView` 需要配合适配器（如 `ArrayAdapter`）来显示数据，适配器的设置通常在 Java 或 Kotlin 代码中完成。
