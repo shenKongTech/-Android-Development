@@ -1,0 +1,113 @@
+MainActivity.java
+package com.example.application;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.widget.*;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.content.Context;
+import java.util.ArrayList;
+import android.view.*;
+import android.graphics.drawable.Drawable;
+import android.graphics.BitmapFactory;
+import android.graphics.Bitmap;
+import android.graphics.*;
+import android.graphics.drawable.AnimationDrawable;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.content.Intent;
+public class MainActivity extends Activity 
+{
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) 
+	{
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		Button bt=findViewById(R.id.bt);
+		bt.setOnClickListener(new View.OnClickListener()
+		{
+			@Override
+			public void onClick(View v)
+			{
+				Intent intent=new Intent(MainActivity.this,animator.class);
+				startActivity(intent);
+			}
+		});
+		
+	}
+	
+		 
+	 
+	 
+		
+    
+	
+}
+	
+animator_list.xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ListView
+		android:id="@+id/lv1"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		/>
+</LinearLayout>
+
+animator.java
+package com.example.application;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.widget.ListView;
+import java.util.ArrayList;
+import java.util.List;
+import android.widget.ArrayAdapter;
+import android.widget.Adapter;
+import android.widget.ListAdapter;
+import android.view.animation.LayoutAnimationController;
+import android.view.animation.AnimationUtils;
+
+public class animator extends Activity {
+    
+    @Override
+    protected void onCreate(Bundle savedInstanceState) 
+	{
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.animator_list);
+        ListView lv=findViewById(R.id.lv1);
+		List<String> list=new ArrayList<String>();
+		for(int i=0;i<20;i++)
+		{
+			list.add("子项"+i);
+		}
+		Adapter adapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,list);
+		lv.setAdapter((ListAdapter) adapter);
+		LayoutAnimationController controller=new 
+		LayoutAnimationController(AnimationUtils.loadAnimation(this,R.anim.scale));
+		controller.setOrder(LayoutAnimationController.ORDER_RANDOM);
+		lv.setLayoutAnimation(controller);
+		lv.startLayoutAnimation();
+    }
+    
+}
+
+scale.xml
+<?xml version="1.0" encoding="utf-8"?>
+	<scale
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		android:interpolator="@android:anim/accelerate_interpolator"
+		android:fromXScale="0.2"
+		android:toXScale="5.0"
+		android:fromYScale="0.2"
+		android:toYScale="5.0"
+		android:pivotX="50%"
+		android:pivotY="50%"
+		android:duration="5000"/>
