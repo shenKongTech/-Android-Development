@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="#FFFFF9F9">
+
+	<Button
+		android:id="@+id/btn1"
+		android:layout_width="100dp"
+		android:layout_height="100dp"
+		android:text="启动单线程服务"
+		android:background="#00BFFF"
+		android:layout_centerHorizontal="true"
+		android:layout_marginTop="250dp"/>
+
+</RelativeLayout>
