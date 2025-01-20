@@ -1,0 +1,51 @@
+<!--activity_main.xml-->
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+<Button
+	android:id="@+id/Btn1"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:layout_centerInParent="true"
+	android:text="这是布局中央的按钮"
+	android:textColor="#ff0000"/>
+<Button
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:layout_centerInParent="true"
+	android:layout_toLeftOf="@id/Btn1"
+	android:text="这是中央按钮左边的按钮"
+	android:textColor="#0000ff"/>
+<Button
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:layout_centerInParent="true"
+	android:layout_toRightOf="@id/Btn1"
+	android:text="这是中央按钮右边的按钮"
+	android:textColor="#0000ff"/>
+<Button
+	android:id="@+id/Btn2"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:layout_centerInParent="true"
+	android:layout_alignParentBottom="true"
+	android:text="这是布局管理器下面的按钮"
+	android:textColor="#0000ff"/>
+<Button
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:layout_alignParentBottom="true"
+	android:layout_toLeftOf="@id/Btn2"
+	android:text="这是下段按钮左边的按钮"
+	android:textColor="#ff0000"/>
+<Button
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:layout_alignParentBottom="true"
+	android:layout_toRightOf="@id/Btn2"
+	android:text="这是下端按钮右边的按钮"
+	android:textColor="#ff0000"/>
+	
+</RelativeLayout>
