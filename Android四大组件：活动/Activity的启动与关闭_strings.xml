@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">
+		测试
+	</string>
+	<string name="quanXue">
+	三更灯火五更鸡\n\n
+	正是男儿读书时\n\n
+	黑发不知勤学早\n\n
+	白首方悔读书迟\n\n
+    </string>
+</resources>
