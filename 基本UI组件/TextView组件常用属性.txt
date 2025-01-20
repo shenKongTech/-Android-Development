@@ -1,0 +1,155 @@
+在 Android 开发中，TextView是一种常用的控件，负责显示文本内容。你可以通过 XML 文件对 TextView进行多种样式和功能上的配置。下面是一些常用的 TextView支持的 XML 属性：
+
+【文本相关属性】
+- 1.android:text
+  设置显示的文本内容。
+  <TextView
+      android:text="Hello World!" />
+
+- 2.android:textSize
+  设置文本的大小，单位为 sp (scale-independent pixels)。
+  <TextView
+      android:textSize="18sp" />
+      
+- 3.android:textColor
+  设置文本颜色，可以使用颜色资源或者直接指定颜色值。
+  <TextView
+      android:textColor="#FF0000" />
+
+- 4.android:textStyle
+  设置文本的样式，如 bold, italic或者同时设置两者。
+  <TextView
+      android:textStyle="bold" />
+  
+
+- 5.android:textAllCaps
+  设置文本是否全大写，true或 false。
+  <TextView
+      android:textAllCaps="true" />
+  
+
+2. 布局相关属性
+- 1.android:layout_width
+  控件的宽度，可以设置为 match_parent, wrap_content或具体的尺寸值。
+  
+  <TextView
+      android:layout_width="wrap_content" />
+  
+
+- 2.android:layout_height
+  控件的高度，通常与 `layout_width` 配合使用。
+  
+  <TextView
+      android:layout_height="wrap_content" />
+  
+
+- 3.android:gravity
+  设置文本的对齐方式，如 center, left, right, top, bottom, center_vertical 等。
+  <TextView
+      android:gravity="center" />
+  
+
+- 4.android:padding
+  设置控件的内边距。
+  <TextView
+      android:padding="16dp" />
+  
+
+- 5.android:paddingLeft, android:paddingTop, android:paddingRight, android:paddingBottom  
+  分别设置各个方向的内边距。
+  
+  <TextView
+      android:paddingLeft="8dp"
+      android:paddingTop="8dp" />
+  
+
+【文本效果相关属性】
+- 1.android:maxLines
+  限制最大行数，文本超出时会自动截断。
+  
+  <TextView
+      android:maxLines="2" />
+  
+
+- 2.android:ellipsize
+  设置文本溢出时的显示效果，如 end（在末尾显示省略号），marquee（滚动），middle等。
+  <TextView
+      android:ellipsize="end" />
+  
+
+- 3.android:lineSpacingExtra
+  设置行间距，单位为像素px或 dp。
+  <TextView
+      android:lineSpacingExtra="4dp" />
+ 
+
+- 4.android:lineHeight
+  设置每一行的高度。
+  <TextView
+      android:lineHeight="24sp" />
+  
+
+- 5.android:singleLine
+  设置文本是否为单行显示。
+  <TextView
+      android:singleLine="true" />
+  
+
+- 6.android:marqueeRepeatLimit
+  设置跑马灯效果重复的次数，-1 表示无限次。
+  
+  <TextView
+      android:marqueeRepeatLimit="marquee_forever" />
+  
+
+【背景与边框相关属性】
+- 1.android:background
+  设置控件的背景，可以是颜色、图片或者 drawable。
+  <TextView
+      android:background="@android:color/holo_blue_light" />
+
+- 2.android:layout_margin
+  设置控件与周围控件或边缘的距离，单位通常为 dp。
+  <TextView
+      android:layout_margin="16dp" />
+  
+
+【字体相关属性】
+- 1.android:typeface
+  设置字体类型，可以是 normal, sans, serif等。
+  <TextView
+      android:typeface="sans" />
+ 
+
+- 2.android:fontFamily
+  设置字体家族，可以选择 Android 系统中提供的字体家族，或引用自定义字体。
+  <TextView
+      android:fontFamily="sans-serif" />
+  
+
+- 3.android:textAppearance
+  设置文本的外观，可以是系统预定义的文本外观，如 ?android:attr/textAppearanceLarge，也可以是自定义的文本样式。
+  <TextView
+      android:textAppearance="?android:attr/textAppearanceLarge" />
+  
+
+【其他】
+- 1.android:scrollHorizontally
+  如果为 true，可以使文本水平滚动显示。
+  <TextView
+      android:scrollHorizontally="true" />
+  
+
+- 2.android:linksClickable
+  设置是否允许点击文本中的链接。
+  <TextView
+      android:linksClickable="true" />
+  
+
+- 3.android:autoLink
+  设置自动将文本中的 URL、电话、邮件等转换为可点击的链接。
+  <TextView
+      android:autoLink="web|email" />
+  
+
+通过这些 XML 属性，你可以灵活地控制 TextView的外观、行为和样式，达到不同的展示效果。
