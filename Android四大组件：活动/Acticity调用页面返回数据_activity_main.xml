@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="#FFFFF9F9">
+
+	<TextView
+		android:layout_width="match_parent"
+		android:layout_height="40dp"
+		android:text="【头像选择】"
+		android:textSize="20dp"
+		android:gravity="center"
+		android:background="#FFC5F693"/>
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="15dp"
+		android:text="你的头像："
+		android:textSize="20dp"
+		android:textColor="#00BFFF"/>
+	<ImageView
+		android:id="@+id/iv1"
+		android:layout_width="100dp"
+		android:layout_height="100dp"
+		android:adjustViewBounds="True"
+		android:layout_gravity="center"
+		android:layout_marginTop="20dp"/>
+    <Button
+		android:id="@+id/btn1"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:background="#FFFfFF"
+		android:text="选择"
+		android:textColor="#00BfFF"
+		android:layout_marginTop="10dp"
+		android:layout_gravity="center"/>
+		
+	
+
+</LinearLayout>
