@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:padding="16dp"
+	>
+<TextView
+	android:layout_height="50dp"
+	android:layout_width="match_parent"
+	android:gravity="center"
+	android:text="----------日历----------"
+	android:textColor="#00BFFF"
+	android:textSize="32sp"
+	android:textStyle="bold"
+	/>
+<DatePicker
+	android:id="@+id/date"
+	android:layout_height="wrap_content"
+	android:layout_width="wrap_content"
+	android:layout_gravity="center_horizontal"
+	android:layout_marginTop="10dp"/>
+<Button
+	android:id="@+id/b1"
+	android:layout_height="60dp"
+	android:layout_width="100dp"
+	android:text="更新"
+	android:textSize="20dp"
+	android:gravity="center"
+	android:background="#00BFFF"
+	android:layout_marginTop="20dp"
+	android:layout_gravity="center"/>
+	
+</LinearLayout>
