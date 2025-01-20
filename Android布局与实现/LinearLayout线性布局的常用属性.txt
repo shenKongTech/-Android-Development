@@ -1,0 +1,109 @@
+LinearLayout是 Android 中常用的布局容器之一，它能够让子视图按水平或垂直的方向排列。LinearLayout 有许多常用的 XML 属性，下面是一些常用的属性及其说明：
+
+1.android:orientation
+   - 描述：设置子视图的排列方向。
+   - 值：
+     - horizontal：水平方向排列子视图。
+     - vertical：垂直方向排列子视图。
+   - 例子：
+     android:orientation="horizontal"
+
+2. android:layout_width 和 android:layout_height
+   - 描述：设置LinearLayout的宽度和高度。
+   - 值：
+     - match_parent：填满父视图的空间。
+     - wrap_content：根据子视图的内容来决定大小
+   - 例子：
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     
+3. android:weightSum
+   - 描述：设置所有子视图 layout_weight 总和的基准值。默认情况下，如果不设置，weightSum会根据子视图的layout_weight自动计算。
+   - 例子：
+     android:weightSum="10"
+     
+4. android:padding
+   - 描述：设置LinearLayout内部的内边距（四个方向的边距）。
+   -值：可以使用单一数值或四个方向的边距。
+   -例子：
+     android:padding="16dp" <!-- 四个方向的边距都为16dp -->
+     
+
+ 5. android:paddingTop、android:paddingBottom、android:paddingLeft、android:paddingRight
+   - 描述：分别设置上、下、左、右的内边距。
+   - 例子：
+     android:paddingTop="16dp"
+     android:paddingLeft="8dp"
+     
+ 6. android:gravity
+   -描述：控制LinearLayout中子视图的对齐方式。
+   - 值：可以是 top、bottom、left、right、center、center_vertical、center_horizontal 等。
+   - 例子：
+     android:gravity="center"  <!-- 子视图在父容器中水平垂直居中 -->
+     
+7. android:layout_margin
+   - 描述：设置LinearLayout外部的外边距（四个方向的边距）。
+   - 例子：
+     android:layout_margin="16dp"  <!-- 四个方向的外边距都为16dp -->
+     
+
+8. android:layout_marginTop、android:layout_marginBottom、android:layout_marginLeft、android:layout_marginRight
+   - 描述：分别设置上、下、左、右的外边距。
+   - 例子：
+     android:layout_marginTop="16dp"
+     android:layout_marginLeft="8dp"
+     
+9. android:divider
+   - 描述：设置子视图之间的分隔线。这个属性常用于 LinearLayout的 orientation 为 vertical时。
+   - 值：可以指定图片资源作为分隔线。
+   - 例子：
+     android:divider="@drawable/divider" <!-- 使用分隔线 -->
+     
+
+10. android:dividerPadding
+   -描述：设置分隔线的内边距，控制分隔线和子视图之间的距离。
+   - 例子：
+     android:dividerPadding="8dp"
+     
+
+11. android:baselineAligned
+   - 描述：是否使子视图在垂直方向上对齐其基线（即文字的基线对齐）。默认情况下为true，表示子视图的基线会对齐。
+   - 值：true或false。
+   - 例子：
+     xml
+     android:baselineAligned="false"
+    
+
+12. android:orientation和 android:weightSum的结合
+   - 描述：通过使用layout_weight来控制子视图在布局中的空间分配，weightSum用来控制所有子视图的总权重的和。
+   - 例子：
+     <LinearLayout
+         android:orientation="horizontal"
+         android:weightSum="10">
+         
+         <Button
+             android:layout_width="0dp"
+             android:layout_height="wrap_content"
+             android:layout_weight="5"
+             android:text="Button 1" />
+         
+         <Button
+             android:layout_width="0dp"
+             android:layout_height="wrap_content"
+             android:layout_weight="3"
+             android:text="Button 2" />
+         
+         <Button
+             android:layout_width="0dp"
+             android:layout_height="wrap_content"
+             android:layout_weight="2"
+             android:text="Button 3" />
+     </LinearLayout>
+
+总结：
+- orientation 决定布局的排列方向。
+- layout_weight用来按比例分配剩余空间。
+- gravity控制子视图在布局中的对齐方式。
+- layout_margin和 padding 用于控制内外边距。
+
+这些属性帮助你更加灵活地控制 LinearLayout中子视图的布局和外观，通常在水平和垂直布局时非常有用。
