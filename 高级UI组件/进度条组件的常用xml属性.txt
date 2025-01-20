@@ -1,0 +1,187 @@
+在 Android 中，ProgressBar的style属性用于设置进度条的外观类型。通过设置不同的style值，你可以轻松改变进度条的形状和动画方式。style 属性有以下几种常见的取值：
+
+1. @android:style/Widget.ProgressBar
+这是默认的水平进度条样式，适用于大多数普通的进度条，通常是水平的，带有进度条的背景。
+
+<ProgressBar
+    android:id="@+id/progressBar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:style="@android:style/Widget.ProgressBar"
+    android:max="100"
+    android:progress="50"
+    android:indeterminate="false"/>
+```
+
+2. @android:style/Widget.ProgressBar.Small
+这是一个较小的进度条，适用于需要小尺寸的场景，常用于较紧凑的界面。
+<ProgressBar
+    android:id="@+id/progressBar"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:style="@android:style/Widget.ProgressBar.Small"
+    android:indeterminate="true"/>
+
+3. @android:style/Widget.ProgressBar.Large
+这个样式是一个较大的进度条，适用于需要显著突出进度条的场景，或者当你想要让用户更加明显地看到加载状态时使用。
+<ProgressBar
+    android:id="@+id/progressBar"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:style="@android:style/Widget.ProgressBar.Large"
+    android:indeterminate="true"/>
+
+4. @android:style/Widget.ProgressBar.Horizontal
+这是水平进度条样式，常用于展示任务的进度，比如文件下载进度，或者其他需要展示具体进度的场景。
+
+<ProgressBar
+    android:id="@+id/progressBar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:style="@android:style/Widget.ProgressBar.Horizontal"
+    android:progress="50"
+    android:max="100"
+    android:indeterminate="false"/>
+    
+5. @android:style/Widget.ProgressBar.Small.Inverse
+这是一个较小的反色进度条样式，通常用于深色背景的界面，以确保进度条在视觉上更加明显。
+
+<ProgressBar
+    android:id="@+id/progressBar"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:style="@android:style/Widget.ProgressBar.Small.Inverse"
+    android:indeterminate="true"/>
+
+6. @android:style/Widget.ProgressBar.Large.Inverse
+这与 @android:style/Widget.ProgressBar.Large 类似，只是它采用了反色样式，适用于深色主题的界面。
+
+<ProgressBar
+    android:id="@+id/progressBar"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:style="@android:style/Widget.ProgressBar.Large.Inverse"
+    android:indeterminate="true"/>
+```
+
+总结：
+
+通过设置 ProgressBar 的 style属性，你可以轻松改变进度条的外观和样式。不同的 style适用于不同的场景，比如大小、颜色反转、水平或圆形进度条等。除了这些内置的style，你还可以通过 progressDrawable属性来自定义进度条的外观，从而满足更复杂的 UI 需求。
+
+在 Android 开发中，ProgressBar组件是一种用于显示进度的视图控件，常用于指示任务的进行状态。ProgressBar主要有两种形式：一种是确定进度条（horizontal progress bar），另一种是不确定进度条（indeterminate progress bar）。以下是一些常用的 ProgressBar组件的 XML 配置：
+
+1. 确定进度条（Horizontal ProgressBar）
+这是最常见的进度条类型，通常用于显示任务的完成百分比。
+
+<ProgressBar
+    android:id="@+id/progressBar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:progress="50"  <!-- 当前进度 -->
+    android:max="100"  <!-- 最大进度 -->
+    android:progressDrawable="@drawable/progress_drawable"  <!-- 自定义进度条样式 -->
+    android:indeterminate="false"  <!-- 设置为 false 表示进度条是确定的 -->
+    android:visibility="visible" />
+```
+
+- android:progress：当前进度值。
+- android:max：进度条的最大值。
+- android:indeterminate：设置为 false表示进度条显示进度；如果设置为 true，则表示进度条没有具体进度，只是一个旋转或循环动画。
+
+2. 不确定进度条（Indeterminate ProgressBar）
+不确定进度条用于任务进度未知的情况，通常以动画的形式出现。
+
+<ProgressBar
+    android:id="@+id/progressBar"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:indeterminate="true"  <!-- 设置为 true 表示不确定进度条 -->
+    android:visibility="visible" />
+```
+
+3. 旋转进度条（Circular ProgressBar）
+通常显示为一个圆形的进度条，常用于加载数据时。
+
+<ProgressBar
+    android:id="@+id/progressBar"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:indeterminate="true"  <!-- 不确定模式，通常用于旋转的圆形进度条 -->
+    android:layout_centerInParent="true"  <!-- 居中显示 -->
+    android:visibility="visible" />
+
+4. 自定义进度条样式
+你可以通过 android:progressDrawable属性来设置自定义的进度条样式。比如，使用 XML 文件来定义进度条的外观：
+
+<ProgressBar
+    android:id="@+id/progressBar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:max="100"
+    android:progress="50"
+    android:progressDrawable="@drawable/custom_progress_bar"
+    android:indeterminate="false" />
+```
+
+在 res/drawable目录下，创建一个 custom_progress_bar.xml文件定义样式：
+
+xml
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@android:id/background">
+        <shape>
+            <solid android:color="#d3d3d3" />
+            <corners android:radius="5dp" />
+        </shape>
+    </item>
+    <item android:id="@android:id/secondaryProgress">
+        <shape>
+            <solid android:color="#a9a9a9" />
+            <corners android:radius="5dp" />
+        </shape>
+    </item>
+    <item android:id="@android:id/progress">
+        <shape>
+            <solid android:color="#4caf50" />
+            <corners android:radius="5dp" />
+        </shape>
+    </item>
+</layer-list>
+
+5. 进度条居中显示
+通常会将进度条放置在RelativeLayout或 FrameLayout中，并使其居中显示。
+
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:layout_gravity="center" />
+</FrameLayout>
+
+6. 垂直方向的进度条
+如果需要一个垂直方向的进度条，可以设置 android:layout_width和 android:layout_height，使其显示为竖直方向的进度条。
+
+<ProgressBar
+    android:id="@+id/progressBar"
+    android:layout_width="wrap_content"
+    android:layout_height="200dp"
+    android:orientation="vertical"  <!-- 设置为垂直方向 -->
+    android:progress="50"
+    android:max="100"
+    android:indeterminate="false" />
+
+7. **控制进度条的显示和隐藏
+你还可以通过 Java 代码控制进度条的可见性。例如，当任务开始时显示进度条，任务完成时隐藏进度条：
+
+java
+ProgressBar progressBar = findViewById(R.id.progressBar);
+progressBar.setVisibility(View.VISIBLE);  // 显示进度条
+
+// 当任务完成后
+progressBar.setVisibility(View.GONE);  // 隐藏进度条
+
+总结：
+在 Android 中，ProgressBar组件非常灵活，可以通过 XML 属性调整样式、大小、进度显示等，同时也支持自定义样式和动画效果。根据应用场景的不同，你可以选择合适的进度条类型和样式来提供更好的用户体验。
