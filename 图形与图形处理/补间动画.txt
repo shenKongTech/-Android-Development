@@ -1,0 +1,162 @@
+alpha.xml
+<?xml version="1.0" encoding="utf-8"?>
+	<alpha xmlns:android="http://schemas.android.com/apk/res/android"
+		android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+		android:fromAlpha="1.0"
+		android:toAlpha="0.1"
+		android:duration="2000"/>
+		
+scale.xml
+<?xml version="1.0" encoding="utf-8"?>
+	<scale
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		android:interpolator="@android:anim/accelerate_interpolator"
+		android:fromXScale="0.2"
+		android:toXScale="5.0"
+		android:fromYScale="0.2"
+		android:toYScale="5.0"
+		android:pivotX="50%"
+		android:pivotY="50%"
+		android:duration="5000"/>
+
+translate.xml
+<?xml version="1.0" encoding="utf-8"?>
+<translate
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+	android:fromXDelta="0%"
+	android:toXDelta="100%"
+	android:fromYDelta="0%"
+	android:toYDelta="0%"
+	android:duration="5000"/>
+	
+rotate.xml
+<?xml version="1.0" encoding="utf-8"?>
+	<rotate
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+		android:fromDegrees="0"
+		android:toDegrees="360"
+		android:duration="1000"
+		android:repeatCount="3"
+		android:repeatMode="reverse"/>
+		
+set.xml
+<?xml version="1.0" encoding="utf-8"?>
+	<set xmlns:android="http://schemas.android.com/apk/res/android"
+		android:interpolator="@android:anim/decelerate_interpolator"
+		android:shareInterpolator="true">
+		<alpha
+			android:duration="2000"
+			android:fromAlpha="1.0"
+			android:toAlpha="0.1"/>
+		<scale
+			android:duration="2000"
+			android:fromXScale="0.2"
+			android:toXScale="5.0"
+			android:fromYScale="0.2"
+			android:toYScale="5.0"
+			android:pivotX="50%"
+			android:pivotY="50%"/>
+		<translate
+			android:duration="2000"
+			android:fromXDelta="0%"
+			android:toXDelta="320%"
+			android:fromYDelta="0%"
+			android:toYDelta="0%"/>
+		<rotate
+			android:duration="2000"
+			android:fromDegrees="0"
+			android:toDegrees="360"
+			android:repeatCount="3"
+			android:repeatMode="reverse"/>
+		
+	</set>
+	
+	MainActivity.java
+	package com.example.application;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.widget.*;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.content.Context;
+import java.util.ArrayList;
+import android.view.*;
+import android.graphics.drawable.Drawable;
+import android.graphics.BitmapFactory;
+import android.graphics.Bitmap;
+import android.graphics.*;
+import android.graphics.drawable.AnimationDrawable;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+public class MainActivity extends Activity implements View.OnClickListener
+{
+	Button bt;
+	Button bt1;
+	Button bt2;
+	Button bt3;
+	Button bt4;
+    ImageView imageView;
+	@Override
+	protected void onCreate(Bundle savedInstanceState) 
+	{
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		bt=findViewById(R.id.bt);
+		bt1=findViewById(R.id.bt1);
+	    bt2=findViewById(R.id.bt2);
+		bt3=findViewById(R.id.bt3);
+		bt4=findViewById(R.id.bt4);
+		bt.setOnClickListener(this);
+		bt1.setOnClickListener(this);
+		bt2.setOnClickListener(this);
+		bt3.setOnClickListener(this);
+		bt4.setOnClickListener(this);
+	    imageView=findViewById(R.id.iv);
+		imageView.setImageResource(R.drawable.rain);
+	}
+	@Override
+	public void onClick(View v)
+	{
+	 Animation ani;
+	 switch(v.getId())
+	 {
+		 case R.id.bt:
+		 {
+			 ani=AnimationUtils.loadAnimation(this,R.anim.alpha);
+			 imageView.startAnimation(ani);
+			 break;
+		 }
+		 case R.id.bt1:
+		 {
+			 ani=AnimationUtils.loadAnimation(this,R.anim.scale);
+			 imageView.startAnimation(ani);
+			 break;
+		 }
+		 case R.id.bt2:
+		 {
+			 ani=AnimationUtils.loadAnimation(this,R.anim.translate);
+			 imageView.startAnimation(ani);
+			 break;
+		 }
+		 case R.id.bt3:
+		 {
+			 ani=AnimationUtils.loadAnimation(this,R.anim.rotate);
+			 imageView.startAnimation(ani);
+			 break;
+		 }
+		 case R.id.bt4:
+		 {
+			 ani=AnimationUtils.loadAnimation(this,R.anim.set);
+			 imageView.startAnimation(ani);
+			 break;
+		 }
+	 }
+	 
+		
+    }
+	
+}
+	
