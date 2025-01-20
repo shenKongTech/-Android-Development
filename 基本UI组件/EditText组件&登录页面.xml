@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+<EditText
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:text="请输入用户名"
+	android:paddingBottom="20dp"<!--内容距控件底部的距离-->
+	android:background="#ffffff"
+	android:id="@+id/edit1"/>
+<EditText
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:text="请输入密码"
+	android:background="#ffffff"
+	android:id="@+id/edit2"
+    android:layout_below="@id/edit1"/><!--布局在edit1组件下方-->
+<Button
+	android:layout_height="wrap_content"
+	android:layout_width="wrap_content"
+	android:text="确定"
+	android:background="#ffffff"
+	android:layout_alignRight="@id/edit2"<!--对齐edit2的右边-->
+	android:layout_below="@id/edit2"/>
+</RelativeLayout>
