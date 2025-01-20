@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+<TextView
+	android:text="请选择游戏角色："
+	android:textColor="#00ff00"
+	android:layout_height="wrap_content"
+	android:layout_width="wrap_content"/>
+<RadioGroup
+	android:id="@+id/group"
+	android:layout_height="wrap_content"
+	android:layout_width="wrap_content"
+	android:orientation="horizontal">
+    <RadioButton
+		android:id="@+id/b1"
+		android:layout_height="wrap_content"
+		android:layout_width="wrap_content"
+	    android:text="张飞"
+		android:textColor="#000000"
+		android:checked="true"/><!--设置选中状态为：选中-->
+	<RadioButton
+		android:id="@+id/b2"
+		android:layout_height="wrap_content"
+		android:layout_width="wrap_content"
+	    android:text="关羽"
+		android:textColor="#000000"/>
+</RadioGroup>
+<Button
+	android:layout_height="wrap_content"
+	android:layout_width="wrap_content"
+	android:id="@+id/b3"
+	android:text="确定选择"
+	android:background="#ffffff"/>
+</LinearLayout>
