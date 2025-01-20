@@ -1,0 +1,173 @@
+在安卓开发中，`File` 类用于文件和目录的操作。它是 `java.io.File` 类的一部分，提供了用于创建、删除、检查文件和目录状态等操作的方法。以下是 `File` 类的一些常用方法：
+
+### 1. 创建和删除文件/目录
+
+- **`createNewFile()`**  
+  创建一个新的空文件。如果文件已经存在，则返回 `false`。  
+  ```java
+  File file = new File(context.getFilesDir(), "example.txt");
+  if (file.createNewFile()) {
+      // 文件创建成功
+  }
+  ```
+
+- **`mkdir()`**  
+  创建单个目录。如果目录已存在，则返回 `false`。  
+  ```java
+  File dir = new File(context.getFilesDir(), "myDir");
+  if (dir.mkdir()) {
+      // 目录创建成功
+  }
+  ```
+
+- **`mkdirs()`**  
+  创建目录，如果父目录不存在，则一并创建。  
+  ```java
+  File dir = new File(context.getFilesDir(), "myDir/subDir");
+  if (dir.mkdirs()) {
+      // 目录和父目录创建成功
+  }
+  ```
+
+- **`delete()`**  
+  删除文件或目录。如果删除成功，返回 `true`；如果文件或目录不存在，则返回 `false`。  
+  ```java
+  File file = new File(context.getFilesDir(), "example.txt");
+  if (file.delete()) {
+      // 删除成功
+  }
+  ```
+
+- **`deleteOnExit()`**  
+  当 JVM 退出时，删除该文件或目录。  
+  ```java
+  File file = new File(context.getFilesDir(), "tempFile.txt");
+  file.deleteOnExit();
+  ```
+
+### 2. 文件/目录的基本信息
+
+- **`exists()`**  
+  检查文件或目录是否存在。  
+  ```java
+  File file = new File(context.getFilesDir(), "example.txt");
+  if (file.exists()) {
+      // 文件存在
+  }
+  ```
+
+- **`isDirectory()`**  
+  检查文件是否是目录。  
+  ```java
+  if (file.isDirectory()) {
+      // 是目录
+  }
+  ```
+
+- **`isFile()`**  
+  检查文件是否是常规文件。  
+  ```java
+  if (file.isFile()) {
+      // 是文件
+  }
+  ```
+
+- **`length()`**  
+  获取文件的大小（字节）。如果文件不存在，返回 0。  
+  ```java
+  long size = file.length();
+  ```
+
+- **`lastModified()`**  
+  获取文件的最后修改时间（以毫秒为单位）。  
+  ```java
+  long lastModified = file.lastModified();
+  ```
+
+### 3. 文件路径和名称
+
+- **`getName()`**  
+  获取文件或目录的名称（不带路径）。  
+  ```java
+  String fileName = file.getName();
+  ```
+
+- **`getAbsolutePath()`**  
+  获取文件或目录的绝对路径。  
+  ```java
+  String absolutePath = file.getAbsolutePath();
+  ```
+
+- **`getParent()`**  
+  获取文件或目录的父目录路径。  
+  ```java
+  String parentPath = file.getParent();
+  ```
+
+- **`getPath()`**  
+  获取文件的路径（相对路径）。  
+  ```java
+  String path = file.getPath();
+  ```
+
+### 4. 文件读写
+
+- **`renameTo(File dest)`**  
+  重命名或移动文件到目标路径。如果操作成功，返回 `true`。  
+  ```java
+  File newFile = new File(context.getFilesDir(), "newExample.txt");
+  if (file.renameTo(newFile)) {
+      // 文件重命名成功
+  }
+  ```
+
+- **`list()`**  
+  列出目录中所有文件和子目录的名称（返回一个字符串数组）。如果文件不是目录，则返回 `null`。  
+  ```java
+  File dir = new File(context.getFilesDir(), "myDir");
+  String[] files = dir.list();
+  ```
+
+- **`listFiles()`**  
+  列出目录中的所有文件和子目录，并返回 `File` 数组。  
+  ```java
+  File dir = new File(context.getFilesDir(), "myDir");
+  File[] files = dir.listFiles();
+  ```
+
+- **`write(byte[] data)`**  
+  `File` 类本身并没有直接写文件的功能，需要通过 `FileOutputStream` 来实现文件写入。  
+  ```java
+  FileOutputStream fos = new FileOutputStream(file);
+  fos.write(data);
+  fos.close();
+  ```
+
+- **`read()`**  
+  同样，`File` 类没有直接读取文件的功能。可以通过 `FileInputStream` 来读取文件内容。  
+  ```java
+  FileInputStream fis = new FileInputStream(file);
+  int data = fis.read();
+  ```
+
+### 5. 权限操作
+
+- **`setReadable(boolean readable)`**  
+  设置文件是否可读。  
+  ```java
+  file.setReadable(true);
+  ```
+
+- **`setWritable(boolean writable)`**  
+  设置文件是否可写。  
+  ```java
+  file.setWritable(true);
+  ```
+
+- **`setExecutable(boolean executable)`**  
+  设置文件是否可执行。  
+  ```java
+  file.setExecutable(true);
+  ```
+
+这些方法是 `File` 类最常用的操作，帮助开发者在安卓应用中进行文件管理和操作。需要注意，某些方法（如文件写入和读取）可能会抛出异常，因此需要适当的异常处理机制。
