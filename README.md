@@ -1,5 +1,5 @@
 # -Android-Development
-Power by 深空科技 DeeskyTech
+________Power by 深空科技 DeeskyTech________
 安卓软件开发的简单案例，助力每一个人入门安卓工程师，我们将实时更新。
 ##################
 仓库包含简单的安卓软件开发案例：→→→→
