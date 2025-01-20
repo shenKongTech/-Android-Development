@@ -16,7 +16,7 @@ Power by 深空科技 DeeskyTech
 10.数据存储→→→→
 11.数据共享→→→→
 12.网络开发→→→→
-13.安卓碎片开发→→→→ \n
+13.安卓碎片开发→→→→ 
 A simple case of Android software development to help everyone get started as an Android engineer, we will update in real time.
 The warehouse contains simple Android software development cases:
 The following is the structure of the warehouse file:
