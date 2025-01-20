@@ -1,0 +1,113 @@
+在 Android 开发中，GridLayout是一种布局管理器，它允许你将子视图（如按钮、文本框等）放置在一个由行和列组成的网格中。GridLayout提供了比传统的 LinearLayout更灵活的布局方式，特别是在处理需要网格布局的 UI 时，十分有用。
+
+常用的GridLayout XML 属性：
+
+1. android:rowCount
+   设置GridLayout的行数（从 0 开始）。这个属性可以告诉 GridLayout有多少行可以容纳子视图。如果没有设置，则GridLayout会根据子视图的排列自动确定行数。
+   android:rowCount="3"
+
+2. android:columnCount
+   设置GridLayout的列数。类似于 rowCount，它定义了每行的列数。如果没有设置，GridLayout`会自动推算列数。
+   android:columnCount="2"
+   
+
+*3. android:orientation
+   设置网格布局的方向，通常不需要显式指定，因为 GridLayou的默认方向是水平和垂直方向的组合（即网格排列）。如果需要设置不同方向的排列，可以使用这个属性来指定，但在 GridLayout中，这个属性通常不需要用到。
+   android:orientation="horizontal"  <!-- 或 "vertical" -->
+
+4. android:useDefaultMargins
+   设置是否为子视图自动添加默认的间距（边距）。如果设置为"true"，则会自动为每个子视图添加默认的边距；如果设置为 "false"，则不会自动添加边距。
+   android:useDefaultMargins="true"
+  
+
+5. android:layout_rowSpan 
+   设置某个子视图跨越的行数。如果一个子视图需要占据多行，可以使用此属性设置它跨越的行数。
+   android:layout_rowSpan="2"
+ 
+
+6. android:layout_columnSpan
+   设置某个子视图跨越的列数。如果一个子视图需要占据多列，可以使用此属性设置它跨越的列数。
+   android:layout_columnSpan="2"
+  
+
+7. android:layout_row
+   设置子视图在 `GridLayout` 中所在的行索引。行索引从 0 开始。
+   
+   android:layout_row="0"
+
+8. android:layout_column
+   设置子视图在 `GridLayout` 中所在的列索引。列索引从 0 开始。
+   
+   android:layout_column="1"
+  
+
+9. android:layout_gravity
+   设置子视图在其单元格中的对齐方式。例如，可以使用 `center`, `left`, `right`, `top`, `bottom` 等。
+   android:layout_gravity="center"
+  
+
+10. android:layout_margin
+    设置子视图的外边距（统一的四个边的边距）。
+    android:layout_margin="8dp"
+    
+
+11.android:layout_marginLeft
+  android:layout_marginTop
+  android:layout_marginRight
+  android:layout_marginBottom
+    分别设置子视图的左、上、右、下边距。
+    android:layout_marginLeft="10dp"
+    android:layout_marginTop="5dp"
+    ```
+
+12. android:layout_width 和 
+android:layout_height  
+    设置子视图的宽度和高度。通常你会使用 wrap_content 或 match_parent，或者根据需要设置具体的 dp 值。
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+
+### 例子：
+
+假设你想创建一个 3 行 2 列的网格布局，且第一个按钮跨越两列，代码可以这样写：
+<GridLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:rowCount="3"
+    android:columnCount="2">
+
+    <Button
+        android:text="按钮1"
+        android:layout_row="0"
+        android:layout_column="0"
+        android:layout_columnSpan="2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:text="按钮2"
+        android:layout_row="1"
+        android:layout_column="0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:text="按钮3"
+        android:layout_row="1"
+        android:layout_column="1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:text="按钮4"
+        android:layout_row="2"
+        android:layout_column="0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</GridLayout>
+
+
+总结：
+
+GridLayout提供了许多属性来控制网格布局中视图的排列和对齐。通过这些属性，你可以精确地控制每个子视图的位置、大小和跨越的行列数，能够帮助你实现复杂的网格布局。
