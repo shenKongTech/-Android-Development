@@ -1,0 +1,138 @@
+在 Android 开发中，**网格视图（GridView）** 是一种常用的布局组件，用于显示多个项（通常是图像、文本或其他视图）以网格的方式排列。`GridView` 是一个继承自 `AbsListView` 的视图组件，可以通过 XML 和 Java 代码进行配置。
+
+以下是一些常用的 `GridView` XML 属性：
+
+### 常用 `GridView` XML 属性
+
+1. **`android:columns`**
+   - 设置每行显示的列数。
+   - **示例**: 
+     ```xml
+     <GridView
+         android:id="@+id/gridView"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:columns="3" />
+     ```
+
+2. **`android:columnWidth`**
+   - 设置每个子项（即网格中的每个单元格）宽度。这个属性不直接影响每行显示的列数，而是控制每个单元格的宽度。
+   - **示例**: 
+     ```xml
+     <GridView
+         android:id="@+id/gridView"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:columnWidth="100dp" />
+     ```
+
+3. **`android:horizontalSpacing`**
+   - 设置网格中每一列之间的水平间距。
+   - **示例**: 
+     ```xml
+     <GridView
+         android:id="@+id/gridView"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:horizontalSpacing="10dp" />
+     ```
+
+4. **`android:verticalSpacing`**
+   - 设置网格中每一行之间的垂直间距。
+   - **示例**:
+     ```xml
+     <GridView
+         android:id="@+id/gridView"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:verticalSpacing="10dp" />
+     ```
+
+5. **`android:stretchMode`**
+   - 设置当行内单元格宽度或高度不足时，如何进行扩展。它有几个值：
+     - **`none`**: 不会拉伸项。
+     - **`spacing`**: 扩展间隔来填满空白区域。
+     - **`columnWidth`**: 扩展列宽度来填满空白区域。
+   - **示例**:
+     ```xml
+     <GridView
+         android:id="@+id/gridView"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:stretchMode="columnWidth" />
+     ```
+
+6. **`android:gravity`**
+   - 设置子项的排列方式。常用于设置子项内容的对齐方式，例如水平和垂直居中对齐。
+   - **示例**:
+     ```xml
+     <GridView
+         android:id="@+id/gridView"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:gravity="center" />
+     ```
+
+7. **`android:numColumns`**
+   - 与 `android:columns` 类似，用来设置每行显示的列数。这个属性在某些版本的 Android 中优先使用，功能上与 `android:columns` 相似，但 `numColumns` 更为常见。
+   - **示例**:
+     ```xml
+     <GridView
+         android:id="@+id/gridView"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:numColumns="3" />
+     ```
+
+8. **`android:scrollingCache`**
+   - 控制是否启用滚动缓存。默认情况下，`GridView` 会缓存滚动位置以提高滚动性能，但你也可以禁用它以节省内存。
+   - **示例**:
+     ```xml
+     <GridView
+         android:id="@+id/gridView"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:scrollingCache="false" />
+     ```
+
+9. **`android:layoutMode`**
+   - 控制网格视图的布局模式。可选择的值为 `grid` 或 `list`，默认为 `grid`。这个属性通常用于调整不同版本的 Android 系统的兼容性。
+   - **示例**:
+     ```xml
+     <GridView
+         android:id="@+id/gridView"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layoutMode="grid" />
+     ```
+
+10. **`android:selector`**
+    - 设置选中项的背景选择器（通常用于改变项被选中时的背景）。这个属性设置一个 `state` 选择器来控制项的视觉状态。
+    - **示例**:
+      ```xml
+      <GridView
+          android:id="@+id/gridView"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:selector="@drawable/grid_item_selector" />
+      ```
+
+### 示例：使用 `GridView` 显示网格项
+
+```xml
+<GridView
+    android:id="@+id/gridView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:numColumns="3"
+    android:horizontalSpacing="10dp"
+    android:verticalSpacing="10dp"
+    android:gravity="center"
+    android:columnWidth="100dp" />
+```
+
+在这个示例中，`GridView` 设置为每行显示 3 列，水平和垂直的间距为 10dp，每个网格项的宽度为 100dp，且网格项内容会居中显示。
+
+### 结论
+
+`GridView` 的 XML 属性允许你灵活地控制网格的布局、外观和间距等。通过合理配置这些属性，可以非常方便地实现自定义网格视图的需求。
