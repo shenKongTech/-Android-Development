@@ -1,0 +1,106 @@
+`LayoutTransition` 是 Android 中的一个类，它用于在布局（`ViewGroup`）中的子视图发生变化时，自动应用动画过渡效果。这个类通常用于对视图进行添加、删除或更改大小等操作时提供平滑的过渡效果。
+
+### 1. **基本概念**
+`LayoutTransition` 通过定义不同的动画过渡效果（如添加、移除、改变大小）来处理视图的布局变化。你可以设置不同的动画效果，包括透明度、平移、缩放、旋转等。
+
+### 2. **使用 `LayoutTransition`**
+要使用 `LayoutTransition`，首先需要对某个 `ViewGroup` 设置它的布局过渡动画。然后，当视图添加、删除或修改时，`LayoutTransition` 会自动应用相关动画。
+
+#### 示例步骤：
+
+1. **创建 `LayoutTransition` 对象**
+2. **设置过渡效果**
+3. **将 `LayoutTransition` 应用到 `ViewGroup`**
+4. **触发布局变化**
+
+### 3. **代码示例**
+
+假设我们有一个 `LinearLayout`，在其中动态添加和删除视图。
+
+```java
+import android.os.Bundle;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
+import android.animation.LayoutTransition;
+
+public class MainActivity extends AppCompatActivity {
+
+    private LinearLayout linearLayout;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        linearLayout = findViewById(R.id.linearLayout);
+
+        // 创建 LayoutTransition 对象
+        LayoutTransition layoutTransition = new LayoutTransition();
+
+        // 设置不同的过渡效果
+        layoutTransition.setDuration(300);  // 动画时长
+
+        // 设置布局添加（View加入）时的动画
+        layoutTransition.enableTransitionType(LayoutTransition.APPEARING);
+
+        // 设置布局移除（View移除）时的动画
+        layoutTransition.enableTransitionType(LayoutTransition.DISAPPEARING);
+
+        // 设置布局大小变化（View的大小发生变化）时的动画
+        layoutTransition.enableTransitionType(LayoutTransition.CHANGE_APPEARING);
+        layoutTransition.enableTransitionType(LayoutTransition.CHANGE_DISAPPEARING);
+
+        // 为 LinearLayout 设置 LayoutTransition
+        linearLayout.setLayoutTransition(layoutTransition);
+
+        // 按钮触发添加或移除 TextView
+        Button addButton = findViewById(R.id.addButton);
+        addButton.setOnClickListener(v -> {
+            TextView textView = new TextView(MainActivity.this);
+            textView.setText("动态添加的 TextView");
+            linearLayout.addView(textView);
+        });
+
+        Button removeButton = findViewById(R.id.removeButton);
+        removeButton.setOnClickListener(v -> {
+            if (linearLayout.getChildCount() > 0) {
+                linearLayout.removeViewAt(0);
+            }
+        });
+    }
+}
+```
+
+### 4. **关键方法与解释**
+
+- `setDuration(long duration)`：设置动画的持续时间，单位为毫秒。
+- `enableTransitionType(int transitionType)`：启用某种类型的动画效果。常用的 `transitionType` 类型有：
+  - `LayoutTransition.APPEARING`：视图添加时的动画。
+  - `LayoutTransition.DISAPPEARING`：视图移除时的动画。
+  - `LayoutTransition.CHANGE_APPEARING`：视图大小改变时的动画。
+  - `LayoutTransition.CHANGE_DISAPPEARING`：视图大小改变时的动画。
+  
+- `setLayoutTransition(LayoutTransition transition)`：将 `LayoutTransition` 应用到 `ViewGroup` 上，确保它在视图添加、删除或大小变化时生效。
+
+### 5. **自定义动画**
+
+除了默认的过渡效果，你还可以为 `LayoutTransition` 自定义具体的动画（如平移、透明度变化等）。
+
+```java
+layoutTransition.setAnimator(LayoutTransition.APPEARING, ObjectAnimator.ofFloat(null, "alpha", 0f, 1f));
+layoutTransition.setAnimator(LayoutTransition.DISAPPEARING, ObjectAnimator.ofFloat(null, "alpha", 1f, 0f));
+layoutTransition.setAnimator(LayoutTransition.CHANGE_APPEARING, ObjectAnimator.ofFloat(null, "scaleX", 0f, 1f));
+layoutTransition.setAnimator(LayoutTransition.CHANGE_DISAPPEARING, ObjectAnimator.ofFloat(null, "scaleX", 1f, 0f));
+```
+
+上面例子中，我们使用 `ObjectAnimator` 来为每种过渡类型自定义动画，分别设置了透明度变化和缩放变化。
+
+### 6. **性能注意**
+`LayoutTransition` 会自动监听布局的变化并应用动画，可能会影响性能，尤其是在视图层级较多或者频繁更新的情况下。需要在合适的场景中使用，以避免性能下降。
+
+### 7. **总结**
+
+`LayoutTransition` 是一个非常方便的工具，可以让布局的变动（如添加、删除和大小变化）变得更加平滑，提升用户体验。通过设置不同的过渡类型和自定义动画，你可以实现丰富的效果。
