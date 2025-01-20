@@ -1,0 +1,27 @@
+TableLayout在 XML 中有一些常用的属性，主要用来控制布局的显示和排列。以下是一些常见的属性：
+
+1. android:layout_width和 android:layout_height：
+   - 设置 TableLayout的宽度和高度，可以使用 match_parent、wrap_content或具体的像素值。
+
+2. android:orientation：
+   - 控制 TableLayout的子项（TableRow）的排列方向，默认为 horizontal，即横向排列（每行的控件水平排列）。
+
+3. android:stretchColumns：
+   - 用于设置哪些列应该被拉伸以填满剩余空间。例如：android:stretchColumns="1,2" 将会拉伸第 2 和第 3 列。
+
+4. android:shrinkColumns：
+   - 控制哪些列应当被缩小以适应空间，类似于 stretchColumns，但方向相反。android:shrinkColumns="0"将缩小第一列。
+
+5. android:collapseColumns：
+   - 用于隐藏某些列，指定哪些列应当折叠，通常与 stretchColumns和 shrinkColumns配合使用。例如：android:collapseColumns="0,2"隐藏第一列和第三列。
+
+6. android:divider：
+   - 用于设置每行之间的分隔线。可以指定颜色、样式等。
+
+7. android:showDividers：
+   - 设置是否显示分隔线，可以使用 none、beginning、middle或 end。
+
+8. android:weightSum：
+   - 设置所有列的总权重值。如果使用 layout_weight属性，则可以通过此属性来指定权重的总和。
+
+这些属性通常与 TableRow中的控件配合使用，以便更灵活地控制布局的排布和样式。
