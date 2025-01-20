@@ -1,0 +1,2 @@
+<uses_permission android:name="android.permision.WRITE_EXTERNAL_STORAGE"/>
+<uses_permission android:name="android.permision.MOUNT_UNMOUNT_FILESYSTEMS"/>
