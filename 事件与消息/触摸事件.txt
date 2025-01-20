@@ -1,0 +1,46 @@
+//MyView.java
+package com.example.application;
+import android.view.View;
+import android.util.AttributeSet;
+import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Color;
+import android.view.MotionEvent;
+
+public class MyView extends View
+{
+    public float X=200;
+	public float Y=200;
+	Paint paint=new Paint();
+	@Override
+	public  MyView(Context context,AttributeSet set)
+	{
+		super(context,set);
+	}
+    @Override
+	public void onDraw(Canvas canvas)
+	{
+		paint.setColor(Color.GREEN);
+		canvas.drawCircle(X,Y,30,paint);
+	}
+    @Override
+	public boolean onTouchEvent(MotionEvent event)
+	{
+		this.X=event.getX();
+		this.Y=event.getY();
+		this.invalidate();
+		return true;
+	}
+}
+//activity_main.xml
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="#FFFFF9F9">
+	<com.example.application.MyView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"/>
+</RelativeLayout>
