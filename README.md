@@ -1,21 +1,21 @@
 # -Android-Development
 Power by 深空科技 DeeskyTech
 安卓软件开发的简单案例，助力每一个人入门安卓工程师，我们将实时更新a
-仓库包含简单的安卓软件开发案例：a
-以下是仓库文件结构：a
-1.安卓布局与实现a
-2.基本UI组件a
-3.高级UI组件a
-4.安卓四大组件：活动a
-5.安卓四大组件：服务与广播a
-6.事件与消息a
-7.资源的使用a
-8.图形与图形处理a
-9.多媒体开发a
-10.数据存储a
-11.数据共享a
-12.网络开发a
-13.安卓碎片开发a
+仓库包含简单的安卓软件开发案例：......... 
+以下是仓库文件结构：..........
+1.安卓布局与实现..........
+2.基本UI组件
+3.高级UI组件
+4.安卓四大组件：活动
+5.安卓四大组件：服务与广播
+6.事件与消息
+7.资源的使用
+8.图形与图形处理
+9.多媒体开发
+10.数据存储
+11.数据共享
+12.网络开发
+13.安卓碎片开发
 A simple case of Android software development to help everyone get started as an Android engineer, we will update in real time.
 The warehouse contains simple Android software development cases:
 The following is the structure of the warehouse file:
