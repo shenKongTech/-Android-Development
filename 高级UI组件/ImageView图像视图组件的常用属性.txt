@@ -1,0 +1,78 @@
+ImageView是 Android 中用来显示图片的视图组件。你可以通过设置 XML 属性来配置 ImageView的外观和行为。以下是一些常用的 ImageViewXML 属性：
+
+1. android:src  用于指定图片资源。
+     <ImageView
+         android:src="@drawable/image" />
+
+ 2. android:contentDescription
+   - 用于指定图片的内容描述，这对于可访问性非常重要，帮助屏幕阅读器描述图片的内容。
+   - 例如：
+     <ImageView
+         android:src="@drawable/image"
+         android:contentDescription="An example image" />
+
+3. android:scaleType  定义如何缩放图片以适应 ImageView的尺寸。常用的选项有：
+     - center：图片居中显示，不缩放。
+     - fitCenter：图片按比例缩放，使其完全显示在 ImageView内，并保持比例。
+     - fitXY：图片缩放以填充整个 ImageView，可能会失去原始比例。
+     - centerCrop：图片按比例缩放，使得 `ImageView` 填满，可能会裁剪图片。
+     - centerInside：图片按比例缩放，如果图片比 ImageView 小，则居中显示；如果图片比 ImageView 大，则按比例缩放。
+   - 例如：
+     <ImageView
+         android:src="@drawable/image"
+         android:scaleType="centerCrop" />
+   
+
+ 4android:adjustViewBounds
+  如果设置为 true，ImageView会根据图片的宽高比例来调整其边界，以确保图片不会被拉伸变形。
+   - 例如：
+     <ImageView
+         android:src="@drawable/image"
+         android:adjustViewBounds="true" />
+     
+
+5. **android:layout_width和android:layout_height
+   - 这两个属性用于设置 ImageView的宽度和高度。可以使用具体的值，也可以使用 match_parent或 wrap_content。
+   - 例如：
+     <ImageView
+         android:src="@drawable/image"
+         android:layout_width="200dp"
+         android:layout_height="200dp" />
+   
+
+6. android:tint
+   - 用于给图片添加颜色滤镜。例如，给图片添加一个红色的滤镜：
+     <ImageView
+         android:src="@drawable/image"
+         android:tint="@color/red" />
+     
+
+7. android:srcCompat(支持向下兼容的属性)
+   - 适用于使用 AppCompat库的情况。与 android:src类似，但支持更好的向下兼容。
+   - 例如：
+     <ImageView
+         app:srcCompat="@drawable/image" />
+         
+8. android:visibility
+   控制 ImageView的可见性，值可以是 visible、invisible 或 gone。
+   例如：
+     <ImageView
+         android:src="@drawable/image"
+         android:visibility="gone" />
+
+9. android:padding
+   - 设置 ImageView的内边距。例如：
+     <ImageView
+         android:src="@drawable/image"
+         android:padding="16dp" />
+     
+
+10. android:layout_gravity
+   - 控制 ImageView 在其父布局中的对齐方式，例如：center, left, right, top, bottom`等。
+   - 例如：
+     <ImageView
+         android:src="@drawable/image"
+         android:layout_gravity="center" />
+     
+
+这些是 ImageView 组件的常用 XML 属性。根据需求，可以选择合适的属性来调整 ImageView 的显示效果和行为。
