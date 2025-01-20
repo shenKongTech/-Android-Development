@@ -1,0 +1,206 @@
+在 Android 开发中，`Jsoup` 是一个非常有用的库，用于解析 HTML 和抓取网页内容。它提供了非常强大且灵活的 API，可以用来从网页中提取信息、修改 HTML、清理 HTML 等。以下是一个关于如何在 Android 开发中使用 `Jsoup` 的教程，包括如何解析本地和远程 HTML 内容、如何使用 CSS 选择器提取数据等。
+
+### 1. 添加 `Jsoup` 依赖
+
+首先，你需要在 Android 项目的 `build.gradle` 文件中添加 `Jsoup` 依赖。打开 `app/build.gradle` 文件，找到 `dependencies` 部分，添加以下内容：
+
+```gradle
+dependencies {
+    implementation 'org.jsoup:jsoup:1.15.4'  // 版本号可以根据需要选择最新版本
+}
+```
+
+然后点击 **Sync Now** 同步你的项目。
+
+### 2. 基本用法
+
+#### 2.1 解析远程网页
+
+在 Android 中，通常我们会使用 `Jsoup` 来抓取网页内容，然后进行解析。需要注意的是，网络请求需要在子线程中进行，避免主线程阻塞。下面是一个抓取网页并解析的示例。
+
+```java
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+
+import java.io.IOException;
+
+public class JsoupExample {
+    public void parseRemoteHtml() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    // 从指定 URL 获取 HTML 文档
+                    String url = "https://www.example.com";
+                    Document doc = Jsoup.connect(url).get();
+
+                    // 获取网页的标题
+                    String title = doc.title();
+                    System.out.println("Title: " + title);
+
+                    // 获取页面中所有的链接
+                    for (Element link : doc.select("a[href]")) {
+                        String linkHref = link.attr("href"); // 获取链接的 href 属性
+                        String linkText = link.text(); // 获取链接的文本
+                        System.out.println("Link: " + linkHref);
+                        System.out.println("Text: " + linkText);
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
+}
+```
+
+在这个示例中：
+- `Jsoup.connect(url).get()`：从指定 URL 抓取 HTML 页面。
+- `doc.title()`：获取网页标题。
+- `doc.select("a[href]")`：通过 CSS 选择器获取所有的 `<a>` 标签。
+  
+**注意**：网络操作必须放在后台线程中，因为 Android 不允许在主线程中进行网络请求。
+
+#### 2.2 解析本地 HTML 文件
+
+如果你有本地 HTML 文件，也可以使用 `Jsoup` 来解析。比如，解析存储在 `assets` 目录中的 HTML 文件。
+
+```java
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+
+import java.io.IOException;
+import java.io.InputStream;
+
+public class JsoupExample {
+    public void parseLocalHtml(InputStream inputStream) {
+        try {
+            // 从输入流中加载 HTML 文档
+            Document doc = Jsoup.parse(inputStream, "UTF-8", "");
+
+            // 获取网页的标题
+            String title = doc.title();
+            System.out.println("Title: " + title);
+
+            // 获取页面中所有的段落内容
+            for (Element paragraph : doc.select("p")) {
+                System.out.println("Paragraph: " + paragraph.text());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+你可以通过以下方式读取 `assets` 目录中的文件：
+
+```java
+InputStream inputStream = getAssets().open("example.html");
+new JsoupExample().parseLocalHtml(inputStream);
+```
+
+### 3. 使用 CSS 选择器提取数据
+
+`Jsoup` 使用 CSS 选择器语法来选择和提取 HTML 元素。这和 jQuery 中的 `$(selector)` 类似。
+
+```java
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+
+import java.io.IOException;
+
+public class JsoupExample {
+    public void extractDataFromHtml() throws IOException {
+        String url = "https://www.example.com";
+        Document doc = Jsoup.connect(url).get();
+
+        // 使用 CSS 选择器获取所有 class 为 'item' 的 div 标签
+        for (Element div : doc.select("div.item")) {
+            String title = div.select("h2").text();  // 获取 <h2> 标签中的文本
+            String link = div.select("a").attr("href");  // 获取 <a> 标签的 href 属性
+            System.out.println("Title: " + title);
+            System.out.println("Link: " + link);
+        }
+    }
+}
+```
+
+在这个示例中：
+- `doc.select("div.item")`：选择所有类名为 `item` 的 `div` 标签。
+- `div.select("h2").text()`：从每个 `div` 中获取 `h2` 标签的文本内容。
+- `div.select("a").attr("href")`：获取 `div` 中的 `a` 标签的 `href` 属性。
+
+### 4. 清理 HTML
+
+`Jsoup` 还可以用来清理 HTML 内容，移除不需要的标签或属性。比如，移除所有的脚本和样式标签：
+
+```java
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+
+import java.io.IOException;
+
+public class JsoupExample {
+    public void cleanHtml() throws IOException {
+        String html = "<html><head><script>alert('test');</script><style>body { color: red; }</style></head><body><p>Hello, World!</p></body></html>";
+        
+        // 清理 HTML，去除脚本和样式
+        Document doc = Jsoup.parse(html);
+        doc.select("script").remove();  // 移除所有 <script> 标签
+        doc.select("style").remove();   // 移除所有 <style> 标签
+
+        System.out.println(doc);  // 输出清理后的 HTML
+    }
+}
+```
+
+### 5. 在 Android 中使用 `Jsoup` 网络请求
+
+由于网络请求不能在主线程中进行，我们通常会使用 `AsyncTask` 或者 `Handler` 来执行异步操作。以下是如何使用 `AsyncTask` 来进行网页抓取和解析：
+
+```java
+import android.os.AsyncTask;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+
+public class JsoupAsyncTask extends AsyncTask<String, Void, Document> {
+
+    @Override
+    protected Document doInBackground(String... urls) {
+        try {
+            // 在后台线程中进行网络请求
+            return Jsoup.connect(urls[0]).get();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    protected void onPostExecute(Document doc) {
+        // 在主线程中更新 UI
+        if (doc != null) {
+            String title = doc.title();
+            System.out.println("Page Title: " + title);
+        }
+    }
+}
+```
+
+使用：
+
+```java
+new JsoupAsyncTask().execute("https://www.example.com");
+```
+
+### 6. 小结
+
+`Jsoup` 是一个强大而易用的 HTML 解析库，它可以帮助我们轻松地抓取网页、解析 HTML 和提取数据。在 Android 中使用时，需要注意：
+- 网络操作必须在后台线程进行。
+- 可以使用 `AsyncTask`、`Thread` 或者其他异步机制来进行网络请求。
+
+通过掌握 `Jsoup`，你可以有效地从网页中提取数据、清理不需要的标签、修改 HTML 内容等。希望这个教程能帮助你入门，随时可以提问更多的细节！
